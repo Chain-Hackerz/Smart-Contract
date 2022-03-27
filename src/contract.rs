@@ -71,13 +71,11 @@ pub fn execute(
                 return Err(ContractError::CustomError{val: "rejected".to_string()});
             }
 
-            let avg = sum/ (delta_time.len() as i64);
-
             return Ok(
                 Response::new()
                     .add_attribute("method", "verify")
                     .add_attribute("status", "good job")
-                    .add_attribute("mean", format!("{}", avg)),
+                    .add_attribute("delta_time", format!("\"{:?}\"", delta_time)),
             );
         },
     }
