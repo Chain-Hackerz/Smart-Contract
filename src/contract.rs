@@ -56,10 +56,6 @@ pub fn execute(
         ExecuteMsg::stats => {
             let keys = STATE.load(deps.storage)?.input;
 
-            //check if size is zero
-
-            //let  = Vec::new();
-
             let mut iter = keys.iter();
             let mut t = iter.next().unwrap().time_stamp;
 
@@ -85,34 +81,8 @@ pub fn execute(
             );
         },
     }
+}
 
-    //for i = 0 -> msg.leng
-    // state.push(msg[i]
-    // match msg {
-    //     ExecuteMsg::Increment {} => try_increment(deps),
-    //     ExecuteMsg::Reset { count } => try_reset(deps, info, count),
-    }
-
-
-// pub fn try_increment(deps: DepsMut) -> Result<Response, ContractError> {
-//     STATE.update(deps.storage, |mut state| -> Result<_, ContractError> {
-//         state.count += 1;
-//         Ok(state)
-//     })?;
-//
-//     Ok(Response::new().add_attribute("method", "try_increment"))
-// }
-//
-// pub fn try_reset(deps: DepsMut, info: MessageInfo, count: i32) -> Result<Response, ContractError> {
-//     STATE.update(deps.storage, |mut state| -> Result<_, ContractError> {
-//         if info.sender != state.owner {
-//             return Err(ContractError::Unauthorized {});
-//         }
-//         state.count = count;
-//         Ok(state)
-//     })?;
-//     Ok(Response::new().add_attribute("method", "reset"))
-// }
 
 #[cfg_attr(not(feature = "library"), entry_point)]
 pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
