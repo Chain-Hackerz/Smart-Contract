@@ -25,7 +25,8 @@ fn test_initialization() {
     //check if state matches sender
     let res_query_config = query(deps.as_ref(), mock_env(), QueryMsg::GetInput {}).unwrap();
     
-    let config: Vec<Action> = from_binary(&res_query_config).unwrap();
-    let actual:Vec<Action> = Vec::new();
+    let config: InputMsg = from_binary(&res_query_config).unwrap();
+    let actual:InputMsg = InputMsg{ inputs: Vec::new() };
+
     assert_eq!(actual, config);
 }
