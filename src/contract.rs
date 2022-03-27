@@ -23,16 +23,7 @@ pub fn instantiate(
     info: MessageInfo,
     msg: InstantiateMsg,
 ) -> Result<Response, ContractError> {
-    // let state = State {
-    //     count: msg.count,
-    //     owner: info.sender.clone(),
-    // };
-
-    //ignore message
-    //let set_of_data = Data {
-    //    input_keys: msg.clone().key_presses,
-    //};
-    let mut vec:Vec<Action> = Vec::new();
+    let vec:Vec<Action> = Vec::new();
     set_contract_version(deps.storage, CONTRACT_NAME, CONTRACT_VERSION)?;
     STATE.save(deps.storage, &Data{input: vec})?;
 
